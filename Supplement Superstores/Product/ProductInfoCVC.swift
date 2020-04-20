@@ -19,6 +19,7 @@ class ProductInfoCVC: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.rightButtonItems(isenabled: true)
         collectionView.delegate = self
         collectionView.dataSource = self
         self.title = filterTag
@@ -49,12 +50,17 @@ class ProductInfoCVC: BaseCollectionViewController {
        // present(vc, animated: true, completion: nil)
     }
     
-    override func rightSearchButtonPressed(_ button: UIButton) {
-         print("teppaedewf")
-    }
+    override func rightProfileButtonPressed(_ button: UIButton) {
+           if let user = LoginUtils.sharedInstance.getUserToDefaults() {
+           let vc = storyboard?.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
+           //vc.filterTag =  filterTag
+           self.navigationController?.pushViewController(vc, animated: true)
+               
+           }
+       }
        
-      override func rightOptionButtonPressed(_ button: UIButton) {
-           print("rigjtoption")
+       override func rightCartButtonPressed(_ button: UIButton) {
+           
        }
     
 }

@@ -13,7 +13,7 @@ class CategoriesGetService {
  static func executeRequest (params: [String:Any], successBlock:@escaping (_ result: AllCategories?) -> (), failureBlock:@escaping (String?) -> ()) {
     
    
-    let urlString  = SSConstant.BASE_URL+"catalogue/categories/"
+    let urlString  = SSConstant.BASE_URL+"/api/v1/catalogue/categories/"
     let header: HTTPHeaders = ["Content-Type" :"application/json"]
     
     AF.request(urlString,method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header).responseDecodable(of: AllCategories.self) { (response) -> Void in

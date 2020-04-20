@@ -17,6 +17,7 @@ class ProductDetailInfoVC: BaseViewController, UITableViewDelegate, UITableViewD
     var productImages: [ProductImageModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.rightButtonItems(isenabled: true)
         self.title = "Supplement Superstore"
         tableView.estimatedRowHeight = 120
         tableView.tableFooterView = UIView()
@@ -80,14 +81,18 @@ class ProductDetailInfoVC: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    override func rightSearchButtonPressed(_ button: UIButton) {
-         print("teppaedewf")
-    }
-       
-      override func rightOptionButtonPressed(_ button: UIButton) {
-           print("rigjtoption")
+     override func rightProfileButtonPressed(_ button: UIButton) {
+           if let user = LoginUtils.sharedInstance.getUserToDefaults() {
+           let vc = storyboard?.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
+           //vc.filterTag =  filterTag
+           self.navigationController?.pushViewController(vc, animated: true)
+               
+           }
        }
-    
+       
+       override func rightCartButtonPressed(_ button: UIButton) {
+           
+       }
     
     func getProductImages(id: String) {
     
@@ -102,5 +107,71 @@ class ProductDetailInfoVC: BaseViewController, UITableViewDelegate, UITableViewD
              }) { (errorMessage) in
                  print(errorMessage)
              }
-         }
+    }
+    
+    @IBAction func addToCartTapped(_ sender: Any) {
+        
+        if let product =  product {
+            var order = CartModel(price: product.discounted_price, title: product.title, productId: product.id, quantity: 1)
+            
+            var carts = self.getCartProductInfo()
+            
+            if updateCart(id: product.id ?? "").count > 0 {
+                for i in 0..<carts.count {
+                    if carts[i].productId == product.id {
+                        order.quantity! = carts[i].quantity! + 1
+                        let obj = carts.remove(at: i)
+                        print(obj)
+                        carts += [order]
+
+                        self.addToCart(orders: carts)
+                        break
+                    }
+                }
+                
+            } else {
+                carts += [order]
+                self.addToCart(orders: carts)
+        }
+    }
+}
+        
+        func addToCart(orders: [CartModel]) {
+            
+            let cartArray = orders
+            let defaults = UserDefaults.standard
+            let encoder = JSONEncoder()
+                                     
+            if let encoded = try? encoder.encode(cartArray) {
+                defaults.set(encoded, forKey: "Cart")
+                defaults.synchronize()
+            }
+    }
+        
+    func updateCart(id: String) -> [CartModel] {
+        let carts = self.getCartProductInfo()
+        return carts.filter{$0.productId == id}
+            
+    }
+        
+    func getCartProductInfo() -> [CartModel] {
+        let defaults = UserDefaults.standard
+        var cart: [CartModel]? = []
+        if let cartObjects = defaults.data(forKey: "Cart"){
+        
+       // object(forKey: "Cart") as? Data {
+            let decoder = JSONDecoder()
+            let loadedCartObj = try? decoder.decode([CartModel].self, from: cartObjects)
+                  cart = loadedCartObj
+        }
+        return cart ?? []
+    }
+
+    
+    @IBAction func buyNowTapped(_ sender: Any) {
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "CartTVC") as! CartTVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

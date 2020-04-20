@@ -12,17 +12,26 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        if (self.navigationItem.rightBarButtonItem == nil) {
-            let button1 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightOptionButtonPressed(_:)))
-            let button2 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightSearchButtonPressed(_:)))
+        
+    }
+    
+    func rightButtonItems(isenabled: Bool) {
+        
+        if isenabled == true {
+            if (self.navigationItem.rightBarButtonItem == nil) {
+                let button1 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightCartButtonPressed))
+                let button2 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightProfileButtonPressed))
 
-            self.navigationItem.setRightBarButtonItems([button1,button2], animated: true)
-            self.navigationItem.rightBarButtonItem!.tag = 100
+                self.navigationItem.setRightBarButtonItems([button1,button2], animated: true)
+                self.navigationItem.rightBarButtonItem!.tag = 100
+            }
+        } else {
+            return
         }
     }
+    
 }
 
 class BaseTableViewController: UITableViewController {
@@ -32,12 +41,22 @@ class BaseTableViewController: UITableViewController {
 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        if (self.navigationItem.rightBarButtonItem == nil) {
-            let button1 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightOptionButtonPressed(_:)))
-            let button2 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightSearchButtonPressed(_:)))
 
-            self.navigationItem.setRightBarButtonItems([button1,button2], animated: true)
-            self.navigationItem.rightBarButtonItem!.tag = 100
+    }
+    
+    
+    func rightButtonItems(isenabled: Bool) {
+        
+        if isenabled == true {
+            if (self.navigationItem.rightBarButtonItem == nil) {
+                let button1 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightCartButtonPressed))
+                let button2 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightProfileButtonPressed))
+
+                self.navigationItem.setRightBarButtonItems([button1,button2], animated: true)
+                self.navigationItem.rightBarButtonItem!.tag = 100
+            }
+        } else {
+            return
         }
     }
 }
@@ -49,23 +68,34 @@ class BaseCollectionViewController: UICollectionViewController {
 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        if (self.navigationItem.rightBarButtonItem == nil) {
-            let button1 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightOptionButtonPressed(_:)))
-            let button2 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightSearchButtonPressed(_:)))
+    }
+    
+    func rightButtonItems(isenabled: Bool) {
+        
+        if isenabled == true {
+            if (self.navigationItem.rightBarButtonItem == nil) {
+                let button1 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightCartButtonPressed))
+                let button2 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightProfileButtonPressed))
 
-            self.navigationItem.setRightBarButtonItems([button1,button2], animated: true)
-            self.navigationItem.rightBarButtonItem!.tag = 100
+                self.navigationItem.setRightBarButtonItems([button1,button2], animated: true)
+                self.navigationItem.rightBarButtonItem!.tag = 100
+            }
+        } else {
+            return
         }
     }
+    
+    
+    
 }
 
 extension UIViewController {
     
-    @IBAction func rightSearchButtonPressed(_ button: UIButton) {
+    @IBAction func rightCartButtonPressed(_ button: UIButton) {
              
     }
     
-    @IBAction func rightOptionButtonPressed(_ button: UIButton) {
+    @IBAction func rightProfileButtonPressed(_ button: UIButton) {
              
     }
 }

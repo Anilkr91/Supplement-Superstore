@@ -94,3 +94,22 @@ extension UIView {
         }
     }
 }
+
+
+public extension NSDictionary{
+    
+    func toJSONString() -> String{
+        if JSONSerialization.isValidJSONObject(self) {
+            do{
+                let data = try JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions(rawValue: 0))
+                
+                if let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
+                    return string as String
+                }
+            }catch {
+                print("error")
+            }
+        }
+        return ""
+    }
+}

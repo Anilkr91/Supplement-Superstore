@@ -13,7 +13,7 @@ class ProductsGetService {
  static func executeRequest (params: [String:Any], successBlock:@escaping (_ result: AllProducts?) -> (), failureBlock:@escaping (String?) -> ()) {
     
    
-    let urlString  = SSConstant.BASE_URL+"catalogue/products/"
+    let urlString  = SSConstant.BASE_URL+"/api/v1/catalogue/products/"
     let header: HTTPHeaders = ["Content-Type" :"application/json"]
     
     AF.request(urlString,method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header).responseDecodable(of: AllProducts.self) { (response) -> Void in

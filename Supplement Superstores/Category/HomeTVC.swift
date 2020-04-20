@@ -13,11 +13,13 @@ class HomeTVC: BaseTableViewController {
     var products = [CategoryModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.rightButtonItems(isenabled: true)
         tableView.estimatedRowHeight = 120
         tableView.tableFooterView = UIView()
         self.getAllCategories()
-         
-
+        
+        print(LoginUtils.sharedInstance.getUserToken())
+        
     }
 
     // MARK: - Table view data source
@@ -67,14 +69,21 @@ class HomeTVC: BaseTableViewController {
         }
     }
     
-    override func rightSearchButtonPressed(_ button: UIButton) {
-         print("teppaedewf")
+    override func rightProfileButtonPressed(_ button: UIButton) {
+        if let user = LoginUtils.sharedInstance.getUserToDefaults() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "OrderTVC") as! OrderTVC
+        self.navigationController?.pushViewController(vc, animated: true)
+            
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
-       
-      override func rightOptionButtonPressed(_ button: UIButton) {
-           print("rigjtoption")
-       }
     
+    override func rightCartButtonPressed(_ button: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "CartTVC") as! CartTVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension HomeTVC : categoryDelegate{
@@ -83,10 +92,7 @@ extension HomeTVC : categoryDelegate{
         let vc = storyboard?.instantiateViewController(withIdentifier: "ProductInfoCVC") as! ProductInfoCVC
         vc.filterTag =  filterTag
         self.navigationController?.pushViewController(vc, animated: true)
-        
-        
     }
-    
     
     func getAllCategories() {
         

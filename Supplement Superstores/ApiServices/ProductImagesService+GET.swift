@@ -13,7 +13,7 @@ class ProductImageGetService {
  static func executeRequest (id: String, successBlock:@escaping (_ result: [ProductImageModel]?) -> (), failureBlock:@escaping (String?) -> ()) {
     
    
-    let urlString  = SSConstant.BASE_URL+"catalogue/product-images/?product__id=\(id)"
+    let urlString  = SSConstant.BASE_URL+"/api/v1/catalogue/product-images/?product__id=\(id)"
     let header: HTTPHeaders = ["Content-Type" :"application/json"]
     
    print(urlString)
