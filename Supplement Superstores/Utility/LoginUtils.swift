@@ -48,6 +48,8 @@ struct LoginUtils {
     func removeUserDefaults() {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "User")
+        defaults.removeObject(forKey: "auth_Token")
+      //  re(forKey: "User")
         defaults.synchronize()
          
       }

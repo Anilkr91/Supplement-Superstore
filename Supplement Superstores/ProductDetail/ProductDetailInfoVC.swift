@@ -1,5 +1,5 @@
 //
-//  ProductDetailInfoTVC.swift
+//  ProductDetailInfoVC.swift
 //  Supplement Superstores
 //
 //  Created by mac on 14/04/20.
@@ -47,8 +47,7 @@ class ProductDetailInfoVC: BaseViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailDescriptionTVCell", for: indexPath) as! ProductDetailDescriptionTVCell
             cell.productSmallDescription.text = product?.title ?? ""
             cell.productDescriptionLabel.text = product?.description ?? ""
-            print(cell.productDescriptionLabel.text )
-            
+            cell.updateCellforDiscount(products: product)
             return cell
             
         } else if indexPath.row == 2 {
@@ -81,18 +80,21 @@ class ProductDetailInfoVC: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     
-     override func rightProfileButtonPressed(_ button: UIButton) {
-           if let user = LoginUtils.sharedInstance.getUserToDefaults() {
-           let vc = storyboard?.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
-           //vc.filterTag =  filterTag
-           self.navigationController?.pushViewController(vc, animated: true)
-               
-           }
-       }
-       
-       override func rightCartButtonPressed(_ button: UIButton) {
-           
-       }
+      override func rightProfileButtonPressed(_ button: UIButton) {
+            if let user = LoginUtils.sharedInstance.getUserToDefaults() {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "OrderTVC") as! OrderTVC
+            self.navigationController?.pushViewController(vc, animated: true)
+                
+            } else {
+                let vc = storyboard?.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        
+        override func rightCartButtonPressed(_ button: UIButton) {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "CartTVC") as! CartTVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     
     func getProductImages(id: String) {
     

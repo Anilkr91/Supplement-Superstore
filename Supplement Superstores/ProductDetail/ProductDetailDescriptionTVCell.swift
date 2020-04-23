@@ -12,6 +12,8 @@ class ProductDetailDescriptionTVCell: UITableViewCell {
 
     @IBOutlet weak var productSmallDescription: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+     @IBOutlet weak var actualpriceLabel: UILabel!
+     @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var productDescriptionLabel: UILabel!
     
     
@@ -25,5 +27,18 @@ class ProductDetailDescriptionTVCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func updateCellforDiscount(products: ProductModel?) {
+        
+        if let products = products {
+        
+    let difference = Double(products.price!)! - Double(products.discounted_price!)!
+    let discount: Int = Int(difference / Double(products.price!)! * 100)
+    self.discountLabel.text = "(\(discount)% OFF)"
+            self.actualpriceLabel.attributedText = "Rs. \(products.price ?? "")".strikeThrough()
+            self.priceLabel.text = "Rs. \(products.discounted_price ?? "")"
+            
+        }
+        
+    }
 }

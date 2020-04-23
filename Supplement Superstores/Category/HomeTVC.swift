@@ -13,6 +13,7 @@ class HomeTVC: BaseTableViewController {
     var products = [CategoryModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Supplement Superstores"
         self.rightButtonItems(isenabled: true)
         tableView.estimatedRowHeight = 120
         tableView.tableFooterView = UIView()

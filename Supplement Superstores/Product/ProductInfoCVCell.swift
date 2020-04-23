@@ -10,12 +10,18 @@ import UIKit
 
 class ProductInfoCVCell: UICollectionViewCell {
     
+    @IBOutlet weak var ActualPriceLabel: UILabel!
+    @IBOutlet weak var discountlabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var productPriceLabel: UILabel!
-    weak var pvc: ProductInfoCVC?
+    //var products: ProductModel?
        override func awakeFromNib() {
            super.awakeFromNib()
+        
+        
+//        let discount = Double(Double(products?.price!)! - Double(products?.discounted_price!)!)/Double(products?.price!)! * 100
+//        self.discountlabel.text = "\(discount/100)%"
     }
     
     func getProductImages(id: String) {
@@ -46,5 +52,18 @@ class ProductInfoCVCell: UICollectionViewCell {
                          print(errorMessage)
                      }
                 }
+    
+    func updateCellforDiscount(products: ProductModel) {
+        
+           let difference = Double(products.price!)! - Double(products.discounted_price!)!
+        
+        let discount: Int = Int(difference / Double(products.price!)! * 100)
+            self.discountlabel.text = "\(discount)% OFF"
+        
+//        let attributeString: NSAttributedString =  NSAttributedString(string: products.price ?? "")
+//               attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+                      
+         //   self.ActualPriceLabel.attributedText = "Rs. \(attributeString)"
+    }
 }
 

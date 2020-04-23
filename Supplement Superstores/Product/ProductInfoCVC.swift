@@ -31,9 +31,16 @@ class ProductInfoCVC: BaseCollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductInfoCVCell", for: indexPath) as! ProductInfoCVCell
         cell.getProductImages(id: products[indexPath.item].id ?? "")
+        
+       
+        cell.updateCellforDiscount(products: products[indexPath.item])
         //cell.pvc = self
+//        let discount = Double(products[indexPath.item].price!)! - Double(products[indexPath.item].discounted_price!)!
+//        cell.discountlabel.text = "\(discount/100)%"
+        
+        cell.ActualPriceLabel.attributedText = products[indexPath.item].price?.strikeThrough()
         cell.productLabel.text = products[indexPath.item].title
-        cell.productPriceLabel.text = products[indexPath.item].discounted_price
+        cell.productPriceLabel.text = "Rs. \(products[indexPath.item].discounted_price ?? "")"
         return cell
         
     }
@@ -50,17 +57,20 @@ class ProductInfoCVC: BaseCollectionViewController {
        // present(vc, animated: true, completion: nil)
     }
     
-    override func rightProfileButtonPressed(_ button: UIButton) {
+     override func rightProfileButtonPressed(_ button: UIButton) {
            if let user = LoginUtils.sharedInstance.getUserToDefaults() {
-           let vc = storyboard?.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
-           //vc.filterTag =  filterTag
+           let vc = storyboard?.instantiateViewController(withIdentifier: "OrderTVC") as! OrderTVC
            self.navigationController?.pushViewController(vc, animated: true)
                
+           } else {
+               let vc = storyboard?.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
+               self.navigationController?.pushViewController(vc, animated: true)
            }
        }
        
        override func rightCartButtonPressed(_ button: UIButton) {
-           
+           let vc = storyboard?.instantiateViewController(withIdentifier: "CartTVC") as! CartTVC
+           self.navigationController?.pushViewController(vc, animated: true)
        }
     
 }
@@ -125,9 +135,14 @@ self.collectionView.reloadData()
                print(errorMessage)
            }
        }
-    
-    
-   
-        
-            
 }
+
+
+extension String {
+    func strikeThrough() -> NSAttributedString {
+        let attributeString =  NSMutableAttributedString(string: self)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0,attributeString.length))
+        return attributeString
+    }
+}
+

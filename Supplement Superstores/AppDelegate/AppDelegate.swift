@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.setupNavigationAppearance()
         return true
+        
     }
     
      class func shared() -> AppDelegate {
@@ -55,6 +57,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "entryPointNVC")as? UINavigationController
         window?.rootViewController = vc
+    }
+    
+    func setupNavigationAppearance() {
+        let navigationbarAppearance = UINavigationBar.appearance()
+       // navigationbarAppearance.barStyle = .default
+        navigationbarAppearance.tintColor = UIColor.white
+        navigationbarAppearance.barTintColor = UIColor.init(red: 22/255.0, green: 125/255.0, blue: 210/255.0, alpha: 1)
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationbarAppearance.titleTextAttributes = textAttributes
+       // navigationbarAppearance.shadowImage = nil
+       // navigationbarAppearance.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Javacom", size: 17.0)!]
     }
 
 }
