@@ -117,21 +117,19 @@ extension ProductInfoCVC: UICollectionViewDelegateFlowLayout {
 
 extension ProductInfoCVC {
     
+    
     func getAllProducts() {
-         //  self.dispatchGroup.enter()
+          ActivityIndicator.shared.showActivityIndicator(onCenter: true, VC: self)
            ProductsGetService.executeRequest(params: [:], successBlock: { (results) in
                if let results = results {
+                 ActivityIndicator.shared.hideActivityindicator()
                 self.products = results.all.filter{$0.category?.name == self.filterTag}
-                
-//                for product in self.products {
-//                    print("prodictlh")
-//                    self.getProductImages(id: product.id ?? "")
-//                }
-self.collectionView.reloadData()
+                self.collectionView.reloadData()
                }
             
                
            }) { (errorMessage) in
+            ActivityIndicator.shared.hideActivityindicator()
                print(errorMessage)
            }
        }

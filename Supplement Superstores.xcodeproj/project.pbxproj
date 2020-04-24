@@ -40,7 +40,6 @@
 		04546F8F24497679000CE688 /* ProductDetailDescriptionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04546F8E24497679000CE688 /* ProductDetailDescriptionTVCell.swift */; };
 		04546F91244976A1000CE688 /* ProductDetailImageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04546F90244976A1000CE688 /* ProductDetailImageTVCell.swift */; };
 		04546F93244983A8000CE688 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04546F92244983A8000CE688 /* BaseViewController.swift */; };
-		04546F95244992AC000CE688 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 04546F94244992AB000CE688 /* user.png */; };
 		0465AF0924475F8B001F3B39 /* SSConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465AF0824475F8B001F3B39 /* SSConstant.swift */; };
 		04766FC124475C1400FAF03B /* ProductsService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04766FC024475C1400FAF03B /* ProductsService+GET.swift */; };
 		04766FC324475C4300FAF03B /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04766FC224475C4300FAF03B /* CategoryModel.swift */; };
@@ -55,6 +54,10 @@
 		0486FF13244B6F4200781F88 /* LoginUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486FF12244B6F4200781F88 /* LoginUtils.swift */; };
 		0486FF15244B7E6F00781F88 /* CartTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486FF14244B7E6F00781F88 /* CartTVC.swift */; };
 		049CB6D22451E62F00A30D4A /* home_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 049CB6D12451E62E00A30D4A /* home_banner.png */; };
+		049CB6E1245213F300A30D4A /* supermarket.png in Resources */ = {isa = PBXBuildFile; fileRef = 049CB6DF245213F300A30D4A /* supermarket.png */; };
+		049CB6E2245213F300A30D4A /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 049CB6E0245213F300A30D4A /* user.png */; };
+		049CB6E4245214D700A30D4A /* AddressService+PUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CB6E3245214D700A30D4A /* AddressService+PUT.swift */; };
+		049CB6E6245216CA00A30D4A /* PlaceOrderService+POST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CB6E5245216CA00A30D4A /* PlaceOrderService+POST.swift */; };
 		20D7DF878E081FD77532320C /* Pods_Supplement_Superstores.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB211115EFF309880B12120E /* Pods_Supplement_Superstores.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,7 +97,6 @@
 		04546F8E24497679000CE688 /* ProductDetailDescriptionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailDescriptionTVCell.swift; sourceTree = "<group>"; };
 		04546F90244976A1000CE688 /* ProductDetailImageTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailImageTVCell.swift; sourceTree = "<group>"; };
 		04546F92244983A8000CE688 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		04546F94244992AB000CE688 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		0465AF0824475F8B001F3B39 /* SSConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSConstant.swift; sourceTree = "<group>"; };
 		04766FC024475C1400FAF03B /* ProductsService+GET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductsService+GET.swift"; sourceTree = "<group>"; };
 		04766FC224475C4300FAF03B /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -109,6 +111,10 @@
 		0486FF12244B6F4200781F88 /* LoginUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUtils.swift; sourceTree = "<group>"; };
 		0486FF14244B7E6F00781F88 /* CartTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTVC.swift; sourceTree = "<group>"; };
 		049CB6D12451E62E00A30D4A /* home_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_banner.png; sourceTree = "<group>"; };
+		049CB6DF245213F300A30D4A /* supermarket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = supermarket.png; sourceTree = "<group>"; };
+		049CB6E0245213F300A30D4A /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		049CB6E3245214D700A30D4A /* AddressService+PUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddressService+PUT.swift"; sourceTree = "<group>"; };
+		049CB6E5245216CA00A30D4A /* PlaceOrderService+POST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaceOrderService+POST.swift"; sourceTree = "<group>"; };
 		7632A35FB3CE5BD44B5563DA /* Pods-Supplement Superstores.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Supplement Superstores.release.xcconfig"; path = "Target Support Files/Pods-Supplement Superstores/Pods-Supplement Superstores.release.xcconfig"; sourceTree = "<group>"; };
 		79608D53A204082F416BA16E /* Pods-Supplement Superstores.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Supplement Superstores.debug.xcconfig"; path = "Target Support Files/Pods-Supplement Superstores/Pods-Supplement Superstores.debug.xcconfig"; sourceTree = "<group>"; };
 		CB211115EFF309880B12120E /* Pods_Supplement_Superstores.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Supplement_Superstores.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,7 +135,6 @@
 		043C7EE524475A6C00630237 /* ApiServices */ = {
 			isa = PBXGroup;
 			children = (
-				04546F94244992AB000CE688 /* user.png */,
 				04766FC024475C1400FAF03B /* ProductsService+GET.swift */,
 				0449E98D2447808200CC51F6 /* CategoriesService+GET.swift */,
 				0449E99124478F6D00CC51F6 /* ProductImagesService+GET.swift */,
@@ -138,6 +143,8 @@
 				040AA49A244C080700E57298 /* AddressPostService.swift */,
 				040AA49E244C0CC400E57298 /* AddressService+GET.swift */,
 				040AA4A2244C42C800E57298 /* OrderService+GET.swift */,
+				049CB6E3245214D700A30D4A /* AddressService+PUT.swift */,
+				049CB6E5245216CA00A30D4A /* PlaceOrderService+POST.swift */,
 			);
 			path = ApiServices;
 			sourceTree = "<group>";
@@ -209,6 +216,8 @@
 		044E7F7E2444AC8D00B55436 /* Supplement Superstores */ = {
 			isa = PBXGroup;
 			children = (
+				049CB6DF245213F300A30D4A /* supermarket.png */,
+				049CB6E0245213F300A30D4A /* user.png */,
 				049CB6D12451E62E00A30D4A /* home_banner.png */,
 				0486FF00244A070B00781F88 /* login_banner.jpeg */,
 				043C7EE524475A6C00630237 /* ApiServices */,
@@ -383,11 +392,12 @@
 			files = (
 				0448E2D1244DFD8A00886AA1 /* headerView.xib in Resources */,
 				0448E2D9244E0DB000886AA1 /* footerView.xib in Resources */,
+				049CB6E2245213F300A30D4A /* user.png in Resources */,
 				0486FF01244A070B00781F88 /* login_banner.jpeg in Resources */,
 				049CB6D22451E62F00A30D4A /* home_banner.png in Resources */,
 				044E7F8C2444AC9200B55436 /* LaunchScreen.storyboard in Resources */,
+				049CB6E1245213F300A30D4A /* supermarket.png in Resources */,
 				044E7F892444AC9200B55436 /* Assets.xcassets in Resources */,
-				04546F95244992AC000CE688 /* user.png in Resources */,
 				044E7F872444AC8D00B55436 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +471,7 @@
 				04546F8F24497679000CE688 /* ProductDetailDescriptionTVCell.swift in Sources */,
 				0486FF0D244AFF5D00781F88 /* LoginPostService.swift in Sources */,
 				0486FF07244AECDB00781F88 /* CartTVCell.swift in Sources */,
+				049CB6E6245216CA00A30D4A /* PlaceOrderService+POST.swift in Sources */,
 				0403B9C12444FEA30026237F /* UIView+Extension.swift in Sources */,
 				044E7F802444AC8D00B55436 /* AppDelegate.swift in Sources */,
 				040AA4A7244C4A9600E57298 /* OrderCell.swift in Sources */,
@@ -478,6 +489,7 @@
 				0465AF0924475F8B001F3B39 /* SSConstant.swift in Sources */,
 				0403B9BF2444CA7C0026237F /* HomeBannerTVCell.swift in Sources */,
 				044E7F942444B35400B55436 /* HomeTVC.swift in Sources */,
+				049CB6E4245214D700A30D4A /* AddressService+PUT.swift in Sources */,
 				044E7F962444B3DF00B55436 /* HomeTableCell.swift in Sources */,
 				044E7F822444AC8D00B55436 /* SceneDelegate.swift in Sources */,
 				0403B9C324455CB30026237F /* ProductInfoCVC.swift in Sources */,

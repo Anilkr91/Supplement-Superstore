@@ -98,15 +98,17 @@ class ProductDetailInfoVC: BaseViewController, UITableViewDelegate, UITableViewD
     
     func getProductImages(id: String) {
     
+        ActivityIndicator.shared.showActivityIndicator(onCenter: true, VC: self)
              ProductImageGetService.executeRequest(id: id, successBlock: { (results) in
-                print(results)
                 self.productImages  = results ?? []
                 
                 DispatchQueue.main.async {
+                    ActivityIndicator.shared.hideActivityindicator()
                     self.tableView.reloadData()
                 }
                 
              }) { (errorMessage) in
+                ActivityIndicator.shared.hideActivityindicator()
                  print(errorMessage)
              }
     }
@@ -114,7 +116,9 @@ class ProductDetailInfoVC: BaseViewController, UITableViewDelegate, UITableViewD
     @IBAction func addToCartTapped(_ sender: Any) {
         
         if let product =  product {
-            var order = CartModel(price: product.discounted_price, title: product.title, productId: product.id, quantity: 1)
+            var order = CartModel(discounted_price: product.discounted_price, price: product.price, title: product.title, description: product.description, productId: product.id, quantity: 1)
+            
+           // (price: product.discounted_price, title: product.title, productId: product.id, quantity: 1)
             
             var carts = self.getCartProductInfo()
             

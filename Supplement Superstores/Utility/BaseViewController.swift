@@ -21,7 +21,7 @@ class BaseViewController: UIViewController {
         
         if isenabled == true {
             if (self.navigationItem.rightBarButtonItem == nil) {
-                let button1 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightCartButtonPressed))
+                let button1 = UIBarButtonItem(image: UIImage(named: "supermarket.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightCartButtonPressed))
                 let button2 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightProfileButtonPressed))
 
                 self.navigationItem.setRightBarButtonItems([button1,button2], animated: true)
@@ -49,7 +49,7 @@ class BaseTableViewController: UITableViewController {
         
         if isenabled == true {
             if (self.navigationItem.rightBarButtonItem == nil) {
-                let button1 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightCartButtonPressed))
+                let button1 = UIBarButtonItem(image: UIImage(named: "supermarket.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightCartButtonPressed))
                 let button2 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightProfileButtonPressed))
 
                 self.navigationItem.setRightBarButtonItems([button1,button2], animated: true)
@@ -74,7 +74,7 @@ class BaseCollectionViewController: UICollectionViewController {
         
         if isenabled == true {
             if (self.navigationItem.rightBarButtonItem == nil) {
-                let button1 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightCartButtonPressed))
+                let button1 = UIBarButtonItem(image: UIImage(named: "supermarket.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightCartButtonPressed))
                 let button2 = UIBarButtonItem(image: UIImage(named: "user.png")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(UIViewController.rightProfileButtonPressed))
 
                 self.navigationItem.setRightBarButtonItems([button1,button2], animated: true)

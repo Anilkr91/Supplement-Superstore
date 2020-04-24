@@ -76,17 +76,13 @@ class AddressTVC: BaseTableViewController {
                 "state": state,
                 "city": city ,
                 "country": country ,
-                "pincode": pincode
-                ]
-            
-                AddressPostService.executeRequest(params: param, successBlock: { (result) in
-                   if let result = result {
-                     print(result)
-                      
-
-                    }
-                }) { (error) in
-                     self.show(title: SSConstant.AppName, message: error ?? "")
+                "pincode": pincode]
+                
+                if let address = addresses {
+                    self.updateAddress(id: address.id ?? "", param: param)
+                
+                } else {
+                     self.addAddress(param: param)
                 }
             }
         }
@@ -96,5 +92,28 @@ class AddressTVC: BaseTableViewController {
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
+    
+    func addAddress(param: [String: Any]) {
+        AddressPostService.executeRequest(params: param, successBlock: { (result) in
+           if let result = result {
+             print(result)
+              
+
+            }
+        }) { (error) in
+             self.show(title: SSConstant.AppName, message: error ?? "")
+        }
     }
+    
+    func updateAddress(id: String, param: [String: Any]) {
+        AddressPutService.executeRequest(id: id, params: param, successBlock: { (result) in
+             if let result = result {
+                    print(result)
+
+                }
+        }) { (error) in
+             self.show(title: SSConstant.AppName, message: error ?? "")
+        }
+    }
+}
 

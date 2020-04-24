@@ -96,16 +96,18 @@ extension HomeTVC : categoryDelegate{
     }
     
     func getAllCategories() {
-        
+        ActivityIndicator.shared.showActivityIndicator(onCenter: true, VC: self)
         CategoriesGetService.executeRequest(params: [:], successBlock: { (results) in
             if let results = results {
                 self.products = results.all
                 DispatchQueue.main.async {[weak self] in
+                    ActivityIndicator.shared.hideActivityindicator()
                     self?.tableView.reloadData()
                 }
             }
             
         }) { (errorMessage) in
+            ActivityIndicator.shared.hideActivityindicator()
             print(errorMessage)
         }
     }

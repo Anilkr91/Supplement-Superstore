@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol CartDelegate: class {
+    func didDelteCell(cell: CartTVCell)
+}
+
 class CartTVCell: UITableViewCell {
 
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productDescriptionLabel: UILabel!
     @IBOutlet weak var pricelabel: UILabel!
     @IBOutlet weak var quantitylabel: UILabel!
+    
+    weak var delegate: CartDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +38,14 @@ class CartTVCell: UITableViewCell {
         productDescriptionLabel.text = cart.title
         quantitylabel.text = "Qty: \(cart.quantity ?? 0)"
         pricelabel.text = "Rs. \(cart.price ?? "")"
+        
+    }
+    
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        
+        if let delegate = delegate {
+            delegate.didDelteCell(cell: self)
+        }
         
     }
     

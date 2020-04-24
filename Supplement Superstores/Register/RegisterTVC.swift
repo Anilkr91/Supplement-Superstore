@@ -43,13 +43,16 @@ class RegisterTVC: BaseTableViewController {
             "password1": password,
             "password2": password ]
         
+            ActivityIndicator.shared.showActivityIndicator(onCenter: true, VC: self)
             RegisterPostService.executeRequest(params: param, successBlock: { (result) in
                if let result = result {
                   LoginUtils.sharedInstance.saveUserToDefaults(login: result)
                     AppDelegate.shared().setHomeAsRVC()
+                ActivityIndicator.shared.hideActivityindicator()
                     
                 }
             }) { (error) in
+                ActivityIndicator.shared.hideActivityindicator()
                  self.show(title: SSConstant.AppName, message: error ?? "")
             }
         }        

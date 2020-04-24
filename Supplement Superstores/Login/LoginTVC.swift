@@ -38,14 +38,17 @@ class LoginTVC: BaseTableViewController {
                 "mobile": phone,
                 "password": password]
             
+                ActivityIndicator.shared.showActivityIndicator(onCenter: true, VC: self)
                 LoginPostService.executeRequest(params: param, successBlock: { (result) in
                     if let result = result {
+                        ActivityIndicator.shared.hideActivityindicator()
                       LoginUtils.sharedInstance.saveUserToDefaults(login: result)
                         AppDelegate.shared().setHomeAsRVC()
                         
                     }
                     
                 }) { (error) in
+                    ActivityIndicator.shared.hideActivityindicator()
                     self.show(title: SSConstant.AppName, message: error ?? "")
                 }
             }

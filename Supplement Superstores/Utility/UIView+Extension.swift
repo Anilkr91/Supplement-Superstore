@@ -113,3 +113,36 @@ public extension NSDictionary{
         return ""
     }
 }
+
+struct ActivityIndicator {
+    private let spinner = UIActivityIndicatorView(style: .whiteLarge)
+        static let shared = ActivityIndicator()
+        //var username: String?
+        
+        private init() { }
+        
+        
+        func hideActivityindicator() {
+            
+            DispatchQueue.main.async {
+                self.spinner.stopAnimating()
+                self.spinner.removeFromSuperview()
+                
+            }
+        }
+        
+        func showActivityIndicator(onCenter: Bool, VC: UIViewController) {
+                   
+                   DispatchQueue.main.async {
+                    self.spinner.center = onCenter ? VC.view.center : CGPoint(x: VC.view.center.x , y: 250)
+                    self.spinner.hidesWhenStopped = true
+                    self.spinner.color = UIColor.init(red: 22/255.0, green: 125/255.0, blue: 210/255.0, alpha: 1)
+                      
+                       
+                    VC.view.addSubview(self.spinner)
+                    self.spinner.bringSubviewToFront(VC.view)
+                    self.spinner.startAnimating()
+                   
+            }
+        }
+}
