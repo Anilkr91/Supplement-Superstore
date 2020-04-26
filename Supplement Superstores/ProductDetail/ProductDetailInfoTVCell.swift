@@ -48,9 +48,7 @@ class ProductDetailInfoTVCell: UITableViewCell {
     
     func updateCell(products: [ProductImageModel]) {
         self.products = products
-//        self.pageControl.setStrokeColor(.green, for: .normal)
-//        self.pageControl.setStrokeColor(.green, for: .selected)
-//        self.pageControl.setFillColor(.green, for: .selected)
+        self.pageControl.hidesForSinglePage = true
         self.pageControl.numberOfPages = products.count
         self.pageControl.contentHorizontalAlignment = .center
         self.pageControl.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)

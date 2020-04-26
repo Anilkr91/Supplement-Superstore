@@ -21,6 +21,10 @@ class RegisterTVC: BaseTableViewController {
          self.rightButtonItems(isenabled: false)
     }
 
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+           cell.selectionStyle = .none
+       }
+    
     @IBAction func submitButtonTapped(_ sender: Any) {
         
         let fname = fnameTextfield.text!.trimmingCharacters(in: .whitespaces)

@@ -20,6 +20,11 @@ class LoginTVC: BaseTableViewController {
         self.title = "Login"
         self.rightButtonItems(isenabled: false)
     }
+    
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
+    }
 
     @IBAction func submitTapped(_ sender: Any) {
             

@@ -37,6 +37,10 @@ class AddressTVC: BaseTableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+           cell.selectionStyle = .none
+       }
+    
     @IBAction func submitButtonTapped(_ sender: Any) {
             
         let name = nametextField.text!.trimmingCharacters(in: .whitespaces)

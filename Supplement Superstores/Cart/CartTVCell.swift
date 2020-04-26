@@ -37,7 +37,7 @@ class CartTVCell: UITableViewCell {
         self.getProductImages(id: cart.productId ?? "")
         productDescriptionLabel.text = cart.title
         quantitylabel.text = "Qty: \(cart.quantity ?? 0)"
-        pricelabel.text = "Rs. \(cart.price ?? "")"
+        pricelabel.text = "Rs. \(cart.discounted_price ?? "")"
         
     }
     

@@ -76,6 +76,11 @@ class OrderTVC: BaseViewController {
 
 extension OrderTVC: UITableViewDelegate, UITableViewDataSource {
     
+//     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//           cell.selectionStyle = .none
+//       }
+//
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.orders.count
     }
@@ -114,7 +119,7 @@ extension OrderTVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
            let headerView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerView" ) as! headerView
-        //headerView.contentView.backgroundColor = .re
+        headerView.contentView.backgroundColor = .groupTableViewBackground
         headerView.orderlabel.text =  "Order Id: \(self.orders[section].id ?? "")"
         return headerView
         }
@@ -124,6 +129,8 @@ extension OrderTVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
          
         let footerView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "footerView" ) as! footerView
+        footerView.contentView.backgroundColor = .groupTableViewBackground
+        
         footerView.backgroundColor = .yellow
         footerView.dateLabel.text =  "Order date: \n \(self.convertDateFormatter(orders[section].created ?? ""))"
         footerView.priceLabel.text = "Total Amount: \n \(self.orders[section].total ?? "")"

@@ -9,7 +9,7 @@
 import UIKit
 
 class CartTVC: BaseViewController {
-
+    
     var addresses: [AddressModel] = []
     var cart: [CartModel] = []
     
@@ -25,7 +25,7 @@ class CartTVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         tableView.tableFooterView = UIView()
         self.title = "Cart"
         self.cart = self.getCartProductInfo()
@@ -35,7 +35,7 @@ class CartTVC: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         getAllAddresses()
+        getAllAddresses()
     }
     
     @objc func logout() {
@@ -47,14 +47,14 @@ class CartTVC: BaseViewController {
         
         if let user = LoginUtils.sharedInstance.getUserToDefaults() {
             let vc = storyboard?.instantiateViewController(withIdentifier: "AddressTVC") as! AddressTVC
-         
-         if addresses.count == 0 {
-             vc.addresses = nil
-         
-         } else {
-             vc.addresses = addresses[0]
-         }
-         self.navigationController?.pushViewController(vc, animated: true)
+            
+            if addresses.count == 0 {
+                vc.addresses = nil
+                
+            } else {
+                vc.addresses = addresses[0]
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
             
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
@@ -71,7 +71,7 @@ class CartTVC: BaseViewController {
                 
                 if self.addresses.count == 0 {
                     return
-               
+                    
                 } else {
                     
                     DispatchQueue.main.async {
@@ -87,93 +87,102 @@ class CartTVC: BaseViewController {
         }
     }
     
-     func getCartProductInfo() -> [CartModel] {
-           let defaults = UserDefaults.standard
-           var cartt: [CartModel]? = []
-           if let cartObjects = defaults.data(forKey: "Cart"){
-           
-          // object(forKey: "Cart") as? Data {
-               let decoder = JSONDecoder()
-               let loadedCartObj = try? decoder.decode([CartModel].self, from: cartObjects)
-                     cartt = loadedCartObj
-           }
-            if cartt?.count == 0 {
-                self.showNoCartView()
-                
-            } else {
-                self.hideNoCartView()
-            }
-                   
-           return cartt ?? []
-       }
+    func getCartProductInfo() -> [CartModel] {
+        let defaults = UserDefaults.standard
+        var cartt: [CartModel]? = []
+        if let cartObjects = defaults.data(forKey: "Cart"){
+            
+            // object(forKey: "Cart") as? Data {
+            let decoder = JSONDecoder()
+            let loadedCartObj = try? decoder.decode([CartModel].self, from: cartObjects)
+            cartt = loadedCartObj
+        }
+        if cartt?.count == 0 {
+            self.showNoCartView()
+            
+        } else {
+            self.hideNoCartView()
+        }
+        
+        return cartt ?? []
+    }
+    
+    
+    func show(title : String, message : String){
+        let alertController     =       UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     
     @IBAction func placeOrderTapped(_ sender: Any) {
         
         let carts = self.getCartProductInfo()
         
         var orders: [[String: Any]] = []
-       
+        
         for i in 0..<carts.count {
-            let discounted_price = Int(Double(carts[i].discounted_price!)!)
-            let price = Int(Double(carts[i].price!)!)
+            let discounted_price = Int(Double(carts[i].discounted_price ?? "0.0") ?? 0)
+            let price = Int(Double(carts[i].price ?? "0.0") ?? 0)
             let order = PlaceOrderModel(discounted_price: discounted_price, price: price, title: carts[i].title, description: carts[i].description, productId: carts[i].productId, quantity: carts[i].quantity).dictionary
             orders.append(order)
-           
+            
         }
         
-        if addresses.count == 0 {
-            print("Add address")
+        if let user = LoginUtils.sharedInstance.getUserToDefaults() {
             
-        } else {
-            
-            if orders.count > 0 {
-               
-                let param = ["address": addresses[0].id ?? "",
-                                       "items": orders
-                                      ] as [String : Any]
-                print(param)
-                ActivityIndicator.shared.showActivityIndicator(onCenter: true, VC: self)
-                PlaceOrderPostService.executeRequest(params: param, successBlock: { (results) in
-                              
-                if let results = results {
-                    ActivityIndicator.shared.hideActivityindicator()
-                    let defaults = UserDefaults.standard
-                        defaults.removeObject(forKey: "Cart")
-                        self.NoDataPopUp()
-                    }
-                            
-            }) { (error) in
-                    ActivityIndicator.shared.hideActivityindicator()
-                    print(error)
-            }
+            if addresses.count == 0 {
+                self.show(title: SSConstant.AppName, message: "Add address first")
+                
             } else {
                 
-              self.show(title: SSConstant.AppName, message: "No items in cart")
+                if orders.count > 0 {
+                    
+                    let param = ["address": addresses[0].id ?? "",
+                                 "items": orders
+                        ] as [String : Any]
+                    print(param)
+                    ActivityIndicator.shared.showActivityIndicator(onCenter: true, VC: self)
+                    PlaceOrderPostService.executeRequest(params: param, successBlock: { (results) in
+                        
+                        if let results = results {
+                            ActivityIndicator.shared.hideActivityindicator()
+                            let defaults = UserDefaults.standard
+                            defaults.removeObject(forKey: "Cart")
+                            self.NoDataPopUp()
+                        }
+                        
+                    }) { (error) in
+                        ActivityIndicator.shared.hideActivityindicator()
+                        print(error)
+                    }
+                } else {
+                    
+                    self.show(title: SSConstant.AppName, message: "No items in cart")
+                }
             }
+            
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
-}
     
     func NoDataPopUp() {
-           popupVC = OrderSucessVC(nibName: "OrderSucessVC", bundle: nil)
-           
-           if let popupVC = popupVC {
-               
-               popupVC.view.center = self.view.center
-               popupVC.shopping.addTarget(self, action: #selector(dismissPopupActionTapped(_:)), for: .touchUpInside)
-               self.view.addSubview(popupVC.view)
-           }
-       }
-       
-       @objc func dismissPopupActionTapped(_ sender :UIButton) {
-             if let popupVC = popupVC {
-                self.navigationController?.popToRootViewController(animated: true)
-             }
-       }
+        popupVC = OrderSucessVC(nibName: "OrderSucessVC", bundle: nil)
+        
+        if let popupVC = popupVC {
+            
+            popupVC.view.center = self.view.center
+            popupVC.shopping.addTarget(self, action: #selector(dismissPopupActionTapped(_:)), for: .touchUpInside)
+            self.view.addSubview(popupVC.view)
+        }
+    }
     
-    func show(title : String, message : String){
-        let alertController     =       UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
+    @objc func dismissPopupActionTapped(_ sender :UIButton) {
+        if let popupVC = popupVC {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 }
 
@@ -190,7 +199,7 @@ extension CartTVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-         let cell = tableView.dequeueReusableCell(withIdentifier: "CartTVCell", for: indexPath) as! CartTVCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CartTVCell", for: indexPath) as! CartTVCell
         cell.delegate = self
         cell.updateCell(cart: cart[indexPath.row])
         return cell
@@ -200,6 +209,9 @@ extension CartTVC: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
+     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+           cell.selectionStyle = .none
+       }
 }
 
 extension CartTVC: CartDelegate {
@@ -207,11 +219,11 @@ extension CartTVC: CartDelegate {
         
         let indexPath = tableView.indexPath(for: cell)
         var carts = self.getCartProductInfo()
-             
-              for i in 0..<carts.count {
+        
+        for i in 0..<carts.count {
+            
+            if i == indexPath?.row {
                 
-                if i == indexPath?.row {
-               
                 DispatchQueue.main.async {
                     self.cart.remove(at: indexPath!.row)
                     self.tableView.deleteRows(at: [indexPath!], with: .automatic)
@@ -219,29 +231,29 @@ extension CartTVC: CartDelegate {
                     self.addToCart(orders: carts)
                     self.cart = self.getCartProductInfo()
                     self.tableView.reloadData()
-                     self.totalLabel.text = "Total \(self.getTotalAmount())"
+                    self.totalLabel.text = "Total \(self.getTotalAmount())"
                 }
             }
         }
     }
     
-        func addToCart(orders: [CartModel]) {
-            
-            let cartArray = orders
-            let defaults = UserDefaults.standard
-            let encoder = JSONEncoder()
-                                     
-            if let encoded = try? encoder.encode(cartArray) {
-                defaults.set(encoded, forKey: "Cart")
-                defaults.synchronize()
+    func addToCart(orders: [CartModel]) {
+        
+        let cartArray = orders
+        let defaults = UserDefaults.standard
+        let encoder = JSONEncoder()
+        
+        if let encoded = try? encoder.encode(cartArray) {
+            defaults.set(encoded, forKey: "Cart")
+            defaults.synchronize()
         }
     }
     
     func getTotalAmount() -> Double {
         var total  = 0.0
         for i in 0..<cart.count {
-
-            let price = Double(cart[i].price!)!
+            
+            let price = Double(cart[i].discounted_price!)!
             total += price * Double(cart[i].quantity!)
         }
         return total
