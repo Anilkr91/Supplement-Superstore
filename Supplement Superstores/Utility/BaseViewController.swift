@@ -32,6 +32,14 @@ class BaseViewController: UIViewController {
         }
     }
     
+    func showAlertWithAction (title:String, message:String, completion:@escaping (_ result:Bool) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+            completion(true)
+        }))
+    }
 }
 
 class BaseTableViewController: UITableViewController {
@@ -59,6 +67,15 @@ class BaseTableViewController: UITableViewController {
             return
         }
     }
+    
+    func showAlertWithAction (title:String, message:String, completion:@escaping (_ result:Bool) -> Void) {
+           let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+           self.present(alert, animated: true, completion: nil)
+           
+           alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+               completion(true)
+           }))
+       }
 }
 
 class BaseCollectionViewController: UICollectionViewController {
@@ -85,8 +102,14 @@ class BaseCollectionViewController: UICollectionViewController {
         }
     }
     
-    
-    
+    func showAlertWithAction (title:String, message:String, completion:@escaping (_ result:Bool) -> Void) {
+           let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+           self.present(alert, animated: true, completion: nil)
+           
+           alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+               completion(true)
+           }))
+    }
 }
 
 extension UIViewController {

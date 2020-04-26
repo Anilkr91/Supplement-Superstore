@@ -39,7 +39,8 @@ class ProductDetailInfoVC: BaseViewController, UITableViewDelegate, UITableViewD
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailInfoTVCell", for: indexPath) as! ProductDetailInfoTVCell
-            cell.products = productImages
+            cell.updateCell(products: productImages)
+           // products = productImages
             cell.pagerView.reloadData()
             return cell
             

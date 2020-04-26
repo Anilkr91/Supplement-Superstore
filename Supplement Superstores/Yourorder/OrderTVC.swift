@@ -12,6 +12,7 @@ class OrderTVC: BaseViewController {
 
     var orders: [orderModel] = []
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var noOrderlabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class OrderTVC: BaseViewController {
         let button1 = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
         self.navigationItem.setRightBarButtonItems([button1], animated: true)
         getAllOrders()
+       
                             
     }
     
@@ -38,10 +40,17 @@ class OrderTVC: BaseViewController {
         
     
     func getAllOrders() {
-        
+        ActivityIndicator.shared.showActivityIndicator(onCenter: true, VC: self)
         OrderGetService.executeRequest(params: [:], successBlock: { (results) in
             if let results = results {
+                ActivityIndicator.shared.hideActivityindicator()
                 self.orders = results.all?.reversed() ?? []
+                
+                if self.orders.count > 0 {
+                    self.hideNoOrder()
+                } else {
+                    self.showNoOrder()
+                }
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -49,8 +58,19 @@ class OrderTVC: BaseViewController {
             }
             
         }) { (errorMessage) in
+            ActivityIndicator.shared.hideActivityindicator()
             print(errorMessage)
         }
+    }
+    
+    func showNoOrder() {
+        self.tableView.backgroundColor = .clear
+        noOrderlabel.isHidden = false
+    }
+    
+    func hideNoOrder() {
+        self.tableView.backgroundColor = .white
+        noOrderlabel.isHidden = true
     }
 }
 

@@ -9,7 +9,7 @@
 import Alamofire
 
 class AddressPostService {
-    static func executeRequest ( params:[String: Any], successBlock:@escaping (_ result: AllAddressModel?) -> (), failureBlock:@escaping (String?) -> ()) {
+    static func executeRequest ( params:[String: Any], successBlock:@escaping (_ result: AddressModel?) -> (), failureBlock:@escaping (String?) -> ()) {
         
         let urlString  = SSConstant.BASE_URL+"/api/v1/users/addresses/"
         let header: HTTPHeaders = [
@@ -19,15 +19,15 @@ class AddressPostService {
         
         AF.request(urlString,method: .post, parameters: params, encoding: JSONEncoding.default, headers: header)
             .validate(statusCode: 200..<300)
-            .responseDecodable(of: AllAddressModel.self) { (response) -> Void in
+            .responseDecodable(of: AddressModel.self) { (response) -> Void in
         
             switch response.result {
             case .success:
                 
-            guard let addresses = response.value else { return }
+            guard let address = response.value else { return }
                          
-                if addresses != nil {
-                    successBlock(addresses)
+                if address != nil {
+                    successBlock(address)
                 }
                
             case .failure:

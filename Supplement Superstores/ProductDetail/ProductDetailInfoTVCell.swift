@@ -12,17 +12,17 @@ import Kingfisher
 import FSPagerView
 
 class ProductDetailInfoTVCell: UITableViewCell {
-    
     var products: [ProductImageModel] = []
     
-   @IBOutlet weak var pageControl: FSPageControl! {
-        didSet {
-            self.pageControl.numberOfPages = self.products.count
-            self.pageControl.contentHorizontalAlignment = .center
-            self.pageControl.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-
-        }
-    }
+   @IBOutlet weak var pageControl: FSPageControl!
+//        didSet {
+//
+//            self.pageControl.numberOfPages = self.products.count
+//            self.pageControl.contentHorizontalAlignment = .center
+//            self.pageControl.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+//
+//        }
+//    }
     
     @IBOutlet weak var pagerView: FSPagerView! {
         didSet {
@@ -44,6 +44,18 @@ class ProductDetailInfoTVCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
+    func updateCell(products: [ProductImageModel]) {
+        self.products = products
+//        self.pageControl.setStrokeColor(.green, for: .normal)
+//        self.pageControl.setStrokeColor(.green, for: .selected)
+//        self.pageControl.setFillColor(.green, for: .selected)
+        self.pageControl.numberOfPages = products.count
+        self.pageControl.contentHorizontalAlignment = .center
+        self.pageControl.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        
+    }
 }
 
 class PagerViewCell: FSPagerViewCell {
@@ -58,7 +70,6 @@ class PagerViewCell: FSPagerViewCell {
     }
 }
 
-
 extension ProductDetailInfoTVCell: FSPagerViewDataSource,FSPagerViewDelegate {
 
 public func numberOfItems(in pagerView: FSPagerView) -> Int {
@@ -72,17 +83,21 @@ public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSP
     let resource = ImageResource(downloadURL: Url!, cacheKey: "\(Url!)")
     cell.imageView?.kf.setImage(with: resource)
     cell.imageView?.contentMode = .scaleAspectFit
-    cell.imageView?.clipsToBounds = true
+    //cell.imageView?.clipsToBounds = true
     return cell
 }
 
 // MARK:- FSPagerView Delegate
 
 func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-    
+
 }
 
 func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
        self.pageControl.currentPage = targetIndex
    }
+    
+    func pagerViewDidScroll(_ pagerView: FSPagerView) {
+        self.pageControl.currentPage = pagerView.currentIndex
+    }
 }

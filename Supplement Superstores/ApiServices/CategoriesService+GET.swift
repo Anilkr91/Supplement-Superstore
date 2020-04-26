@@ -28,7 +28,7 @@ class CategoriesGetService {
           }
           
             break
-        case .failure(let error):
+        case .failure(let error as Error):
                 failureBlock(error.localizedDescription)
             
             break

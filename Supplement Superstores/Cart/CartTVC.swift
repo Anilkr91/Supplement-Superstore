@@ -18,17 +18,24 @@ class CartTVC: BaseViewController {
     @IBOutlet weak var addressLine2: UILabel!
     @IBOutlet weak var addressLine3: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    var popupVC:OrderSucessVC?
     
+    @IBOutlet weak var noCartView: UIView!
+    @IBOutlet weak var noCartImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAllAddresses()
+       
         tableView.tableFooterView = UIView()
         self.title = "Cart"
         self.cart = self.getCartProductInfo()
         self.totalLabel.text = "Total \(self.getTotalAmount())"
         
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         getAllAddresses()
     }
     
     @objc func logout() {
@@ -62,12 +69,17 @@ class CartTVC: BaseViewController {
             if let results = results {
                 self.addresses = results.all
                 
-                DispatchQueue.main.async {
-                    self.namePhoneLabel.text = self.addresses[0].line_1
-                    self.addressLine2.text = self.addresses[0].line_2
-                    self.addressLine3.text = self.addresses[0].line_3
+                if self.addresses.count == 0 {
+                    return
+               
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        self.namePhoneLabel.text = self.addresses[0].line_1
+                        self.addressLine2.text = self.addresses[0].line_2
+                        self.addressLine3.text = self.addresses[0].line_3
+                    }
                 }
-                
             }
             
         }) { (errorMessage) in
@@ -77,15 +89,22 @@ class CartTVC: BaseViewController {
     
      func getCartProductInfo() -> [CartModel] {
            let defaults = UserDefaults.standard
-           var cart: [CartModel]? = []
+           var cartt: [CartModel]? = []
            if let cartObjects = defaults.data(forKey: "Cart"){
            
           // object(forKey: "Cart") as? Data {
                let decoder = JSONDecoder()
                let loadedCartObj = try? decoder.decode([CartModel].self, from: cartObjects)
-                     cart = loadedCartObj
+                     cartt = loadedCartObj
            }
-           return cart ?? []
+            if cartt?.count == 0 {
+                self.showNoCartView()
+                
+            } else {
+                self.hideNoCartView()
+            }
+                   
+           return cartt ?? []
        }
     
     @IBAction func placeOrderTapped(_ sender: Any) {
@@ -106,11 +125,55 @@ class CartTVC: BaseViewController {
             print("Add address")
             
         } else {
-            let param = ["address": addresses[0].id ?? "",
-                         "items": orders
-                        ] as [String : Any]
-                   print(param)
-        }
+            
+            if orders.count > 0 {
+               
+                let param = ["address": addresses[0].id ?? "",
+                                       "items": orders
+                                      ] as [String : Any]
+                print(param)
+                ActivityIndicator.shared.showActivityIndicator(onCenter: true, VC: self)
+                PlaceOrderPostService.executeRequest(params: param, successBlock: { (results) in
+                              
+                if let results = results {
+                    ActivityIndicator.shared.hideActivityindicator()
+                    let defaults = UserDefaults.standard
+                        defaults.removeObject(forKey: "Cart")
+                        self.NoDataPopUp()
+                    }
+                            
+            }) { (error) in
+                    ActivityIndicator.shared.hideActivityindicator()
+                    print(error)
+            }
+            } else {
+                
+              self.show(title: SSConstant.AppName, message: "No items in cart")
+            }
+    }
+}
+    
+    func NoDataPopUp() {
+           popupVC = OrderSucessVC(nibName: "OrderSucessVC", bundle: nil)
+           
+           if let popupVC = popupVC {
+               
+               popupVC.view.center = self.view.center
+               popupVC.shopping.addTarget(self, action: #selector(dismissPopupActionTapped(_:)), for: .touchUpInside)
+               self.view.addSubview(popupVC.view)
+           }
+       }
+       
+       @objc func dismissPopupActionTapped(_ sender :UIButton) {
+             if let popupVC = popupVC {
+                self.navigationController?.popToRootViewController(animated: true)
+             }
+       }
+    
+    func show(title : String, message : String){
+        let alertController     =       UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -121,6 +184,7 @@ extension CartTVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return cart.count
     }
     
@@ -142,8 +206,6 @@ extension CartTVC: CartDelegate {
     func didDelteCell(cell: CartTVCell) {
         
         let indexPath = tableView.indexPath(for: cell)
-        print(indexPath)
-        
         var carts = self.getCartProductInfo()
              
               for i in 0..<carts.count {
@@ -183,5 +245,19 @@ extension CartTVC: CartDelegate {
             total += price * Double(cart[i].quantity!)
         }
         return total
+    }
+    
+    func showNoCartView() {
+        self.tableView.backgroundColor = .clear
+        self.noCartView.isHidden = false
+        self.noCartImage.isHidden = false
+        
+    }
+    
+    func hideNoCartView() {
+        self.tableView.backgroundColor = .white
+        self.noCartView.isHidden = true
+        self.noCartImage.isHidden = true
+        
     }
 }

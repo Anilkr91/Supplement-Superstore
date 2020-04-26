@@ -94,24 +94,31 @@ class AddressTVC: BaseTableViewController {
         }
     
     func addAddress(param: [String: Any]) {
+        ActivityIndicator.shared.showActivityIndicator(onCenter: true, VC: self)
         AddressPostService.executeRequest(params: param, successBlock: { (result) in
            if let result = result {
-             print(result)
-              
-
+            ActivityIndicator.shared.hideActivityindicator()
+            self.showAlertWithAction(title: SSConstant.AppName, message: "Address added successfully") { (true) in
+                self.navigationController?.popViewController(animated: true)
+                }
             }
         }) { (error) in
+             ActivityIndicator.shared.hideActivityindicator()
              self.show(title: SSConstant.AppName, message: error ?? "")
         }
     }
     
     func updateAddress(id: String, param: [String: Any]) {
+        ActivityIndicator.shared.showActivityIndicator(onCenter: true, VC: self)
         AddressPutService.executeRequest(id: id, params: param, successBlock: { (result) in
              if let result = result {
-                    print(result)
-
-                }
+             ActivityIndicator.shared.hideActivityindicator()
+             self.showAlertWithAction(title: SSConstant.AppName, message: "Address updated successfully") { (true) in
+                 self.navigationController?.popViewController(animated: true)
+                 }
+             }
         }) { (error) in
+            ActivityIndicator.shared.hideActivityindicator()
              self.show(title: SSConstant.AppName, message: error ?? "")
         }
     }

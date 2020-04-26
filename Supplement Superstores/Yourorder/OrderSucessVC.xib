@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderSucessVC" customModule="Supplement_Superstores" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="8JM-JF-k1Z" id="w7U-vP-030"/>
+                <outlet property="headerLabel" destination="UG4-YI-i2c" id="PyM-6f-xUk"/>
+                <outlet property="shopping" destination="Um7-HN-fMd" id="bXV-er-IpP"/>
+                <outlet property="subHeaderLabel" destination="bed-JZ-yND" id="4NX-3M-JeC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8JM-JF-k1Z">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UG4-YI-i2c">
+                            <rect key="frame" x="25" y="375" width="364" height="33.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your order has been placed successfully" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bed-JZ-yND">
+                            <rect key="frame" x="25" y="433.5" width="364" height="23"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Payment Mode: Cash-on-delivery \n for any queries please call us at : 8477885110" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vja-YA-7cJ">
+                            <rect key="frame" x="25" y="743" width="364" height="35"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Um7-HN-fMd">
+                            <rect key="frame" x="107" y="506.5" width="200" height="50"/>
+                            <color key="backgroundColor" red="0.92941176470588238" green="0.49411764705882355" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="ITb-h4-2XX"/>
+                                <constraint firstAttribute="height" constant="50" id="M1i-DB-LSw"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                            <state key="normal" title="Continue Shopping">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check_mark.png" translatesAutoresizingMaskIntoConstraints="NO" id="a9O-94-fJc">
+                            <rect key="frame" x="107" y="125" width="200" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="IHT-nb-6bq"/>
+                                <constraint firstAttribute="height" constant="200" id="Rah-yy-MjD"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="bed-JZ-yND" firstAttribute="leading" secondItem="UG4-YI-i2c" secondAttribute="leading" id="7MI-Og-Z12"/>
+                        <constraint firstItem="bed-JZ-yND" firstAttribute="trailing" secondItem="UG4-YI-i2c" secondAttribute="trailing" id="7av-e9-pSt"/>
+                        <constraint firstAttribute="trailing" secondItem="UG4-YI-i2c" secondAttribute="trailing" constant="25" id="9fu-pf-Xms"/>
+                        <constraint firstItem="a9O-94-fJc" firstAttribute="centerX" secondItem="8JM-JF-k1Z" secondAttribute="centerX" id="Fyb-eq-ZkF"/>
+                        <constraint firstItem="a9O-94-fJc" firstAttribute="top" secondItem="8JM-JF-k1Z" secondAttribute="top" constant="125" id="OMN-NY-aQc"/>
+                        <constraint firstItem="Vja-YA-7cJ" firstAttribute="leading" secondItem="8JM-JF-k1Z" secondAttribute="leading" constant="25" id="Pj9-ST-Flx"/>
+                        <constraint firstItem="Um7-HN-fMd" firstAttribute="centerX" secondItem="bed-JZ-yND" secondAttribute="centerX" id="Tb6-O5-gk5"/>
+                        <constraint firstItem="UG4-YI-i2c" firstAttribute="centerX" secondItem="a9O-94-fJc" secondAttribute="centerX" id="e0q-dP-1WB"/>
+                        <constraint firstAttribute="trailing" secondItem="Vja-YA-7cJ" secondAttribute="trailing" constant="25" id="j6W-Bz-UDq"/>
+                        <constraint firstItem="UG4-YI-i2c" firstAttribute="top" secondItem="a9O-94-fJc" secondAttribute="bottom" constant="50" id="nlO-bC-v9S"/>
+                        <constraint firstItem="bed-JZ-yND" firstAttribute="centerX" secondItem="UG4-YI-i2c" secondAttribute="centerX" id="s7z-aH-0Yw"/>
+                        <constraint firstItem="Um7-HN-fMd" firstAttribute="top" secondItem="bed-JZ-yND" secondAttribute="bottom" constant="50" id="sjY-qD-kMG"/>
+                        <constraint firstItem="UG4-YI-i2c" firstAttribute="leading" secondItem="8JM-JF-k1Z" secondAttribute="leading" constant="25" id="xIb-X9-f3I"/>
+                        <constraint firstItem="bed-JZ-yND" firstAttribute="top" secondItem="UG4-YI-i2c" secondAttribute="bottom" constant="25" id="zQ8-sW-pGp"/>
+                        <constraint firstAttribute="bottom" secondItem="Vja-YA-7cJ" secondAttribute="bottom" constant="40" id="zre-cL-1M7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8JM-JF-k1Z" secondAttribute="trailing" id="6eS-Ew-0Zp"/>
+                <constraint firstItem="8JM-JF-k1Z" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="9EY-HL-myy"/>
+                <constraint firstItem="8JM-JF-k1Z" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jlY-II-LYH"/>
+                <constraint firstItem="8JM-JF-k1Z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yqB-FL-0kY"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="115.84821428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Check_mark.png" width="800" height="800"/>
+    </resources>
+</document>

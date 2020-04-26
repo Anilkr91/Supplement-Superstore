@@ -40,13 +40,34 @@ extension HomeTableCell: UICollectionViewDataSource, UICollectionViewDelegate {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         
+       
+        let modValue = indexPath.row % 4
+        
+        if modValue == 0 {
+            cell.ContainerView.backgroundColor = UIColor(red: 247/255.0, green: 238/255.0, blue: 222/255.0, alpha: 1)
+        }
+        
+        else if modValue == 1 {
+            cell.ContainerView.backgroundColor = UIColor(red: 233/255.0, green: 247/255.0, blue: 247/255.0, alpha: 1)
+
+        }
+       
+        else if modValue == 2 {
+            cell.ContainerView.backgroundColor =  UIColor(red: 243/255.0, green: 240/255.0, blue: 247/255.0, alpha: 1)
+
+        }
+        
+        else if modValue == 3 {
+            cell.ContainerView.backgroundColor =  UIColor(red: 250/255.0, green: 234/255.0, blue: 234/255.0, alpha: 1)
+
+        }
+        
         let url = URL(string: products[indexPath.item].image ?? "")
         cell.productImageView.kf.setImage(with: url)
         cell.productLabel.text = products[indexPath.item].name ?? ""
         return cell
         
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count
@@ -57,7 +78,6 @@ extension HomeTableCell: UICollectionViewDataSource, UICollectionViewDelegate {
             delegate.didSelectCategory(filterTag: products[indexPath.item].name ?? "")
         }
     }
-  
 }
 
 extension HomeTableCell: UICollectionViewDelegateFlowLayout {
@@ -83,7 +103,7 @@ extension HomeTableCell: UICollectionViewDelegateFlowLayout {
         let widthPerItem = availableWidth / itemsPerRow
         print("========", CGSize(width: widthPerItem, height: widthPerItem))
         //self.itemHeight = widthPerItem
-        return CGSize(width: widthPerItem, height: widthPerItem + 8)
+        return CGSize(width: widthPerItem , height: widthPerItem + 50)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -95,6 +115,6 @@ extension HomeTableCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return 10
     }
 }

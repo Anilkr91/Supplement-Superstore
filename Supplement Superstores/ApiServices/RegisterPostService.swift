@@ -31,8 +31,9 @@ class RegisterPostService {
                   do{
                     let JSONDict = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
                                     
-                    let errorMessage = JSONDict.value(forKey: "non_field_errors") as! [String]
-                    failureBlock(errorMessage[0])
+                    let mobile = JSONDict.value(forKey: "mobile") as! [String]
+                    let password = JSONDict.value(forKey: "password1") as! [String]
+                    failureBlock("\(mobile)\(password)")
                                        
                     } catch{
                         failureBlock(error.localizedDescription)

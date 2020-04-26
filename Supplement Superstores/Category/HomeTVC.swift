@@ -108,7 +108,9 @@ extension HomeTVC : categoryDelegate{
             
         }) { (errorMessage) in
             ActivityIndicator.shared.hideActivityindicator()
-            print(errorMessage)
+            self.showAlertWithAction(title: SSConstant.AppName, message: errorMessage ?? "") { (true) in
+                
+            }
         }
     }
 }

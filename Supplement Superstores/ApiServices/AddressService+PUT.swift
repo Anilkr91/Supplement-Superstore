@@ -9,25 +9,25 @@
 import Alamofire
 
 class AddressPutService {
-    static func executeRequest ( id: String, params:[String: Any], successBlock:@escaping (_ result: AllAddressModel?) -> (), failureBlock:@escaping (String?) -> ()) {
+    static func executeRequest ( id: String, params:[String: Any], successBlock:@escaping (_ result: AddressModel?) -> (), failureBlock:@escaping (String?) -> ()) {
         
-        let urlString  = SSConstant.BASE_URL+"/api/v1/users/addresses/\(id)"
+        let urlString  = SSConstant.BASE_URL+"/api/v1/users/addresses/\(id)/"
         let header: HTTPHeaders = [
             "Authorization": "JWT \(LoginUtils.sharedInstance.getUserToken() ?? "")",
             "Content-Type" :"application/json"
         ]
         
-        AF.request(urlString,method: .post, parameters: params, encoding: JSONEncoding.default, headers: header)
+        AF.request(urlString,method: .put, parameters: params, encoding: JSONEncoding.default, headers: header)
             .validate(statusCode: 200..<300)
-            .responseDecodable(of: AllAddressModel.self) { (response) -> Void in
+            .responseDecodable(of: AddressModel.self) { (response) -> Void in
         
             switch response.result {
             case .success:
                 
-            guard let addresses = response.value else { return }
+            guard let addresse = response.value else { return }
                          
-                if addresses != nil {
-                    successBlock(addresses)
+                if addresse != nil {
+                    successBlock(addresse)
                 }
                
             case .failure:

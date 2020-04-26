@@ -12,7 +12,8 @@ class RegisterTVC: BaseTableViewController {
 
     @IBOutlet weak var passwordtextField: UITextField!
     @IBOutlet weak var phoneNumberTextfield: UITextField!
-    @IBOutlet weak var nameTextfield: UITextField!
+    @IBOutlet weak var fnameTextfield: UITextField!
+     @IBOutlet weak var lnameTextfield: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +23,17 @@ class RegisterTVC: BaseTableViewController {
 
     @IBAction func submitButtonTapped(_ sender: Any) {
         
-        let name = nameTextfield.text!.trimmingCharacters(in: .whitespaces)
+        let fname = fnameTextfield.text!.trimmingCharacters(in: .whitespaces)
+        let lname = lnameTextfield.text!.trimmingCharacters(in: .whitespaces)
         let phone = phoneNumberTextfield.text!.trimmingCharacters(in: .whitespaces)
         let password = passwordtextField.text!.trimmingCharacters(in: .whitespaces)
                
-        if name.isEmpty {
-            self.show(title: SSConstant.AppName, message: "Name is required")
+        if fname.isEmpty {
+            self.show(title: SSConstant.AppName, message: "FirstName is required")
+       
+        } else if lname.isEmpty {
+            self.show(title: SSConstant.AppName, message: "LastName Number is required")
+                   
         } else if phone.isEmpty {
             self.show(title: SSConstant.AppName, message: "Phone Number is required")
             
@@ -37,8 +43,8 @@ class RegisterTVC: BaseTableViewController {
         } else {
             
            let param = [
-            "first_name": name,
-            "last_name": "",
+            "first_name": fname,
+            "last_name": lname,
             "mobile": phone,
             "password1": password,
             "password2": password ]
