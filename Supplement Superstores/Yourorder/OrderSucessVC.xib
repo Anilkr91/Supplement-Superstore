@@ -30,13 +30,13 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UG4-YI-i2c">
-                            <rect key="frame" x="25" y="375" width="364" height="33.5"/>
+                            <rect key="frame" x="25" y="409" width="364" height="33.5"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your order has been placed successfully" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bed-JZ-yND">
-                            <rect key="frame" x="25" y="433.5" width="364" height="23"/>
+                            <rect key="frame" x="25" y="467.5" width="364" height="23"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Um7-HN-fMd">
-                            <rect key="frame" x="107" y="506.5" width="200" height="50"/>
+                            <rect key="frame" x="107" y="540.5" width="200" height="50"/>
                             <color key="backgroundColor" red="0.92941176470588238" green="0.49411764705882355" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="ITb-h4-2XX"/>
@@ -60,7 +60,7 @@
                             </state>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check_mark.png" translatesAutoresizingMaskIntoConstraints="NO" id="a9O-94-fJc">
-                            <rect key="frame" x="107" y="125" width="200" height="200"/>
+                            <rect key="frame" x="107" y="159" width="200" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="IHT-nb-6bq"/>
                                 <constraint firstAttribute="height" constant="200" id="Rah-yy-MjD"/>
@@ -73,9 +73,9 @@
                         <constraint firstItem="bed-JZ-yND" firstAttribute="trailing" secondItem="UG4-YI-i2c" secondAttribute="trailing" id="7av-e9-pSt"/>
                         <constraint firstAttribute="trailing" secondItem="UG4-YI-i2c" secondAttribute="trailing" constant="25" id="9fu-pf-Xms"/>
                         <constraint firstItem="a9O-94-fJc" firstAttribute="centerX" secondItem="8JM-JF-k1Z" secondAttribute="centerX" id="Fyb-eq-ZkF"/>
-                        <constraint firstItem="a9O-94-fJc" firstAttribute="top" secondItem="8JM-JF-k1Z" secondAttribute="top" constant="125" id="OMN-NY-aQc"/>
                         <constraint firstItem="Vja-YA-7cJ" firstAttribute="leading" secondItem="8JM-JF-k1Z" secondAttribute="leading" constant="25" id="Pj9-ST-Flx"/>
                         <constraint firstItem="Um7-HN-fMd" firstAttribute="centerX" secondItem="bed-JZ-yND" secondAttribute="centerX" id="Tb6-O5-gk5"/>
+                        <constraint firstItem="a9O-94-fJc" firstAttribute="centerY" secondItem="8JM-JF-k1Z" secondAttribute="centerY" constant="-150" id="WmU-qh-NM7"/>
                         <constraint firstItem="UG4-YI-i2c" firstAttribute="centerX" secondItem="a9O-94-fJc" secondAttribute="centerX" id="e0q-dP-1WB"/>
                         <constraint firstAttribute="trailing" secondItem="Vja-YA-7cJ" secondAttribute="trailing" constant="25" id="j6W-Bz-UDq"/>
                         <constraint firstItem="UG4-YI-i2c" firstAttribute="top" secondItem="a9O-94-fJc" secondAttribute="bottom" constant="50" id="nlO-bC-v9S"/>
