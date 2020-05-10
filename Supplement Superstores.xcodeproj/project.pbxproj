@@ -89,7 +89,7 @@
 		0449E98F244781F100CC51F6 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		0449E99124478F6D00CC51F6 /* ProductImagesService+GET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductImagesService+GET.swift"; sourceTree = "<group>"; };
 		0449E9932447910A00CC51F6 /* ProductImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageModel.swift; sourceTree = "<group>"; };
-		044E7F7C2444AC8D00B55436 /* Supplement Superstores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Supplement Superstores.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		044E7F7C2444AC8D00B55436 /* Code Supplement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Code Supplement.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		044E7F7F2444AC8D00B55436 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		044E7F812444AC8D00B55436 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		044E7F862444AC8D00B55436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 		044E7F7D2444AC8D00B55436 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				044E7F7C2444AC8D00B55436 /* Supplement Superstores.app */,
+				044E7F7C2444AC8D00B55436 /* Code Supplement.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -364,7 +364,7 @@
 			);
 			name = "Supplement Superstores";
 			productName = "Supplement Superstores";
-			productReference = 044E7F7C2444AC8D00B55436 /* Supplement Superstores.app */;
+			productReference = 044E7F7C2444AC8D00B55436 /* Code Supplement.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -657,14 +657,17 @@
 			baseConfigurationReference = 79608D53A204082F416BA16E /* Pods-Supplement Superstores.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = RMWFHFK3Q5;
 				INFOPLIST_FILE = "Supplement Superstores/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.NeoFitnes.Supplement-Superstores";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codesupplement;
+				PRODUCT_NAME = "Code Supplement";
+				PROVISIONING_PROFILE_SPECIFIER = CodeSupplementDistribution;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -675,14 +678,17 @@
 			baseConfigurationReference = 7632A35FB3CE5BD44B5563DA /* Pods-Supplement Superstores.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = RMWFHFK3Q5;
 				INFOPLIST_FILE = "Supplement Superstores/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.NeoFitnes.Supplement-Superstores";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codesupplement;
+				PRODUCT_NAME = "Code Supplement";
+				PROVISIONING_PROFILE_SPECIFIER = CodeSupplementDistribution;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
