@@ -63,6 +63,7 @@
 		04AC7E8E24549C3E009AF804 /* Check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AC7E8D24549C3E009AF804 /* Check_mark.png */; };
 		04AC7E902454A8E3009AF804 /* NoCart.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AC7E8F2454A8E3009AF804 /* NoCart.png */; };
 		04AC7E922454B8CF009AF804 /* UITextField+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC7E912454B8CF009AF804 /* UITextField+Helper.swift */; };
+		04F0DEA024672EBE00054A60 /* ImageZoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0DE9F24672EBE00054A60 /* ImageZoomVC.swift */; };
 		20D7DF878E081FD77532320C /* Pods_Supplement_Superstores.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB211115EFF309880B12120E /* Pods_Supplement_Superstores.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		04AC7E8D24549C3E009AF804 /* Check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Check_mark.png; sourceTree = "<group>"; };
 		04AC7E8F2454A8E3009AF804 /* NoCart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoCart.png; sourceTree = "<group>"; };
 		04AC7E912454B8CF009AF804 /* UITextField+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Helper.swift"; sourceTree = "<group>"; };
+		04F0DE9F24672EBE00054A60 /* ImageZoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageZoomVC.swift; sourceTree = "<group>"; };
 		7632A35FB3CE5BD44B5563DA /* Pods-Supplement Superstores.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Supplement Superstores.release.xcconfig"; path = "Target Support Files/Pods-Supplement Superstores/Pods-Supplement Superstores.release.xcconfig"; sourceTree = "<group>"; };
 		79608D53A204082F416BA16E /* Pods-Supplement Superstores.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Supplement Superstores.debug.xcconfig"; path = "Target Support Files/Pods-Supplement Superstores/Pods-Supplement Superstores.debug.xcconfig"; sourceTree = "<group>"; };
 		CB211115EFF309880B12120E /* Pods_Supplement_Superstores.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Supplement_Superstores.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +251,7 @@
 				0448E2DE244E10A800886AA1 /* Address */,
 				0448E2DD244E109900886AA1 /* Yourorder */,
 				04AC7E912454B8CF009AF804 /* UITextField+Helper.swift */,
+				04F0DE9F24672EBE00054A60 /* ImageZoomVC.swift */,
 			);
 			path = "Supplement Superstores";
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				0449E99224478F6D00CC51F6 /* ProductImagesService+GET.swift in Sources */,
 				040AA49D244C08F700E57298 /* AddressModel.swift in Sources */,
 				0486FF15244B7E6F00781F88 /* CartTVC.swift in Sources */,
+				04F0DEA024672EBE00054A60 /* ImageZoomVC.swift in Sources */,
 				04766FC324475C4300FAF03B /* CategoryModel.swift in Sources */,
 				040AA499244B854200E57298 /* AddressTVC.swift in Sources */,
 				047D4545244CCCE800037D60 /* CartModel.swift in Sources */,
