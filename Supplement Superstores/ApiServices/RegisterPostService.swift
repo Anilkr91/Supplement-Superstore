@@ -31,9 +31,18 @@ class RegisterPostService {
                   do{
                     let JSONDict = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
                                     
-                    let mobile = JSONDict.value(forKey: "mobile") as! [String]
-                    let password = JSONDict.value(forKey: "password1") as! [String]
-                    failureBlock("\(mobile)\(password)")
+                    
+                    var mobile = ""
+                     var password = ""
+                   if let result = JSONDict.value(forKey: "mobile") as? [String]{
+                    mobile = result.first ?? ""
+                    }
+                    
+                    if let result2 = JSONDict.value(forKey: "password1") as? [String] {
+                        password = result2.first ?? ""
+                    }
+                       
+                    failureBlock("\(mobile)\n \(password)")
                                        
                     } catch{
                         failureBlock(error.localizedDescription)
