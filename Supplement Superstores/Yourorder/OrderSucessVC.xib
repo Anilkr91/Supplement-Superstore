@@ -12,7 +12,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderSucessVC" customModule="Supplement_Superstores" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderSucessVC" customModule="Code_Supplement" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="8JM-JF-k1Z" id="w7U-vP-030"/>
                 <outlet property="headerLabel" destination="UG4-YI-i2c" id="PyM-6f-xUk"/>
@@ -59,7 +59,7 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check_mark.png" translatesAutoresizingMaskIntoConstraints="NO" id="a9O-94-fJc">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check.png" translatesAutoresizingMaskIntoConstraints="NO" id="a9O-94-fJc">
                             <rect key="frame" x="107" y="159" width="200" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="IHT-nb-6bq"/>
@@ -99,6 +99,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Check_mark.png" width="800" height="800"/>
+        <image name="check.png" width="512" height="512"/>
     </resources>
 </document>
