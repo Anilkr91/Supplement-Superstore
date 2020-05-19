@@ -11,6 +11,8 @@ import Kingfisher
 
 class ImageZoomVC: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet weak var crossButton: UIButton!
+    
     var imageView: UIImageView!
     var scrollImg: UIScrollView!
     var imageUrl: URL?
@@ -19,6 +21,29 @@ class ImageZoomVC: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         self.setupViews()
         
+        if #available(iOS 13, *) {
+           hideDismiss()
+        } else {
+           showDismiss()
+            
+        }
+    }
+    
+    func hideDismiss() {
+        crossButton.isHidden = true
+        crossButton.isEnabled = false
+        
+    }
+    
+    func showDismiss() {
+       crossButton.isHidden = false
+        crossButton.isEnabled = true
+        crossButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+        
+    }
+    
+  @objc func dismissVC(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     func setupViews() {
@@ -43,6 +68,7 @@ class ImageZoomVC: UIViewController, UIScrollViewDelegate {
         scrollImg.addGestureRecognizer(doubleTapGest)
         
         self.view.addSubview(scrollImg)
+        self.view.addSubview(crossButton)
         
         imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: vWidth, height: vHeight))
         
@@ -54,12 +80,13 @@ class ImageZoomVC: UIViewController, UIScrollViewDelegate {
         imageView!.clipsToBounds = false
         scrollImg.addSubview(imageView!)
         
+        
     }
     
-    @objc func doneButtonClicked(_ button:UIBarButtonItem!){
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+//    @objc func doneButtonClicked(_ button:UIBarButtonItem!){
+//        self.dismiss(animated: true, completion: nil)
+//    }
+//    
     @objc func handleDoubleTapScrollView(recognizer: UITapGestureRecognizer) {
         if scrollImg.zoomScale == 1 {
             scrollImg.zoom(to: zoomRectForScale(scale: scrollImg.maximumZoomScale, center: recognizer.location(in: recognizer.view)), animated: true)
