@@ -43,20 +43,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="206"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pgc-YX-xl9">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pgc-YX-xl9" customClass="FSPagerView" customModule="FSPagerView">
                                             <rect key="frame" x="15" y="20" width="384" height="166"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="wPD-5W-ilb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="166"/>
-                                                </imageView>
-                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="wPD-5W-ilb" secondAttribute="bottom" id="0FJ-dN-5fy"/>
-                                                <constraint firstItem="wPD-5W-ilb" firstAttribute="top" secondItem="Pgc-YX-xl9" secondAttribute="top" id="0ad-5x-JlQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="wPD-5W-ilb" secondAttribute="trailing" id="j8h-3O-5ou"/>
-                                                <constraint firstItem="wPD-5W-ilb" firstAttribute="leading" secondItem="Pgc-YX-xl9" secondAttribute="leading" id="yEt-9Q-yss"/>
-                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                     <real key="value" value="5"/>
@@ -74,6 +63,10 @@
                                                     <size key="value" width="0.0" height="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="dataSource" destination="pDS-sl-8Vu" id="Uy1-MZ-bck"/>
+                                                <outlet property="delegate" destination="pDS-sl-8Vu" id="iJB-6o-hJU"/>
+                                            </connections>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -83,6 +76,9 @@
                                         <constraint firstItem="Pgc-YX-xl9" firstAttribute="leading" secondItem="0Dt-tQ-0cv" secondAttribute="leading" constant="15" id="rcU-gt-pI5"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="pagerView" destination="Pgc-YX-xl9" id="YuG-7D-Xpu"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableCell" rowHeight="469" id="ENJ-3o-Paa" customClass="HomeTableCell" customModule="Supplement_Superstores" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="234" width="414" height="469"/>
@@ -1435,7 +1431,6 @@
     <resources>
         <image name="NoCart.png" width="266" height="222"/>
         <image name="cross" width="44" height="43.5"/>
-        <image name="home_banner.png" width="582" height="313"/>
         <image name="login_banner.jpeg" width="1077" height="692"/>
     </resources>
 </document>
