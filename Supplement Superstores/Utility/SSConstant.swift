@@ -7,7 +7,7 @@
 //
 
 struct SSConstant {
-  static let BASE_URL = "http://52.15.209.150"
-  static let AppName = "Supplement Superstores"
+  static let BASE_URL = "https://api.codesupplement.com"
+  static let AppName = "Code Supplement"
 
 }

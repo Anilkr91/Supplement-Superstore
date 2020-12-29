@@ -13,7 +13,7 @@ class HomeTVC: BaseTableViewController {
     var products = [CategoryModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Supplement Superstores"
+        self.title = "Code Supplement"
         self.rightButtonItems(isenabled: true)
         tableView.estimatedRowHeight = 120
         tableView.tableFooterView = UIView()
@@ -63,7 +63,7 @@ class HomeTVC: BaseTableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
-            return 250
+            return 170
         
         } else {
             return UITableView.automaticDimension

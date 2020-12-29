@@ -17,7 +17,7 @@ class ProductDetailInfoVC: BaseViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.rightButtonItems(isenabled: true)
-        self.title = "Supplement Superstore"
+        self.title = "Code Supplement"
         tableView.estimatedRowHeight = 120
         tableView.tableFooterView = UIView()
         self.getProductImages(id: product?.id ?? "")
@@ -51,6 +51,14 @@ class ProductDetailInfoVC: BaseViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailDescriptionTVCell", for: indexPath) as! ProductDetailDescriptionTVCell
             cell.productSmallDescription.text = product?.title ?? ""
             cell.productDescriptionLabel.text = product?.description ?? ""
+            
+            guard let data = (product?.description ?? "").data(using: String.Encoding.unicode)else{return cell}
+
+            try? cell.productDescriptionLabel.attributedText =
+               NSAttributedString(data: data,
+                               options: [.documentType:NSAttributedString.DocumentType.html],
+                    documentAttributes: nil)
+            
             cell.updateCellforDiscount(products: product)
             return cell
             

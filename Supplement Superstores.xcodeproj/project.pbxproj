@@ -66,6 +66,9 @@
 		04F0DEA024672EBE00054A60 /* ImageZoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0DE9F24672EBE00054A60 /* ImageZoomVC.swift */; };
 		20D7DF878E081FD77532320C /* Pods_Supplement_Superstores.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB211115EFF309880B12120E /* Pods_Supplement_Superstores.framework */; };
 		6FBEA8302467D5A000C218F1 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBEA82F2467D5A000C218F1 /* check.png */; };
+		6FC93291249F4F210045972C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC93290249F4F210045972C /* SystemConfiguration.framework */; };
+		6FFC61F12493CB520039AA95 /* banner2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFC61F02493CB520039AA95 /* banner2.png */; };
+		6FFC61F32493CBE00039AA95 /* banner3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFC61F22493CBE00039AA95 /* banner3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +132,9 @@
 		04AC7E912454B8CF009AF804 /* UITextField+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Helper.swift"; sourceTree = "<group>"; };
 		04F0DE9F24672EBE00054A60 /* ImageZoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageZoomVC.swift; sourceTree = "<group>"; };
 		6FBEA82F2467D5A000C218F1 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		6FC93290249F4F210045972C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6FFC61F02493CB520039AA95 /* banner2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner2.png; sourceTree = "<group>"; };
+		6FFC61F22493CBE00039AA95 /* banner3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner3.png; sourceTree = "<group>"; };
 		7632A35FB3CE5BD44B5563DA /* Pods-Supplement Superstores.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Supplement Superstores.release.xcconfig"; path = "Target Support Files/Pods-Supplement Superstores/Pods-Supplement Superstores.release.xcconfig"; sourceTree = "<group>"; };
 		79608D53A204082F416BA16E /* Pods-Supplement Superstores.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Supplement Superstores.debug.xcconfig"; path = "Target Support Files/Pods-Supplement Superstores/Pods-Supplement Superstores.debug.xcconfig"; sourceTree = "<group>"; };
 		CB211115EFF309880B12120E /* Pods_Supplement_Superstores.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Supplement_Superstores.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FC93291249F4F210045972C /* SystemConfiguration.framework in Frameworks */,
 				20D7DF878E081FD77532320C /* Pods_Supplement_Superstores.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +239,8 @@
 		044E7F7E2444AC8D00B55436 /* Supplement Superstores */ = {
 			isa = PBXGroup;
 			children = (
+				6FFC61F22493CBE00039AA95 /* banner3.png */,
+				6FFC61F02493CB520039AA95 /* banner2.png */,
 				6FBEA82F2467D5A000C218F1 /* check.png */,
 				04AC7E8D24549C3E009AF804 /* Check_mark.png */,
 				049CB6DF245213F300A30D4A /* supermarket.png */,
@@ -346,6 +355,7 @@
 		C570D6AF9056DC6708801E52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FC93290249F4F210045972C /* SystemConfiguration.framework */,
 				CB211115EFF309880B12120E /* Pods_Supplement_Superstores.framework */,
 			);
 			name = Frameworks;
@@ -415,11 +425,13 @@
 				6FBEA8302467D5A000C218F1 /* check.png in Resources */,
 				0448E2D9244E0DB000886AA1 /* footerView.xib in Resources */,
 				049CB6E2245213F300A30D4A /* user.png in Resources */,
+				6FFC61F32493CBE00039AA95 /* banner3.png in Resources */,
 				0486FF01244A070B00781F88 /* login_banner.jpeg in Resources */,
 				04AC7E902454A8E3009AF804 /* NoCart.png in Resources */,
 				049CB6D22451E62F00A30D4A /* home_banner.png in Resources */,
 				044E7F8C2444AC9200B55436 /* LaunchScreen.storyboard in Resources */,
 				047E0465245498F000914169 /* OrderSucessVC.xib in Resources */,
+				6FFC61F12493CB520039AA95 /* banner2.png in Resources */,
 				04AC7E8E24549C3E009AF804 /* Check_mark.png in Resources */,
 				049CB6E1245213F300A30D4A /* supermarket.png in Resources */,
 				044E7F892444AC9200B55436 /* Assets.xcassets in Resources */,
@@ -668,13 +680,17 @@
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = RMWFHFK3Q5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Supplement Superstores/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.codesupplement;
 				PRODUCT_NAME = "Code Supplement";
 				PROVISIONING_PROFILE_SPECIFIER = CodeSupplementDistribution;
@@ -691,13 +707,17 @@
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = RMWFHFK3Q5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Supplement Superstores/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.codesupplement;
 				PRODUCT_NAME = "Code Supplement";
 				PROVISIONING_PROFILE_SPECIFIER = CodeSupplementDistribution;
